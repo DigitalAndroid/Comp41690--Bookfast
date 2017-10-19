@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars = "vertical"
     tools:context="ie.bookfast.bookfast.MainActivity">
 
     <Button
@@ -18,8 +19,10 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/main_to_barcode_scanner_textview" />
+        android:layout_marginTop="7dp"
+        app:layout_constraintTop_toBottomOf="@+id/main_to_barcode_scanner_textview"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <Button
         android:id="@+id/main_to_bibliotherapy_btn"
@@ -109,5 +112,6 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="70dp"
         app:layout_constraintTop_toBottomOf="@+id/main_welcome_message" />
+
 
 </android.support.constraint.ConstraintLayout>

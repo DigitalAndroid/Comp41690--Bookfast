@@ -6,4 +6,8 @@
     android:layout_height="match_parent"
     tools:context="ie.bookfast.bookfast.MapActivity">
 
+    <org.osmdroid.views.MapView android:id="@+id/map"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
 </android.support.constraint.ConstraintLayout>
