@@ -25,7 +25,7 @@ public class MapActivity extends AppCompatActivity {
     private Location location;
     private double latitude;
     private double longitude;
-
+//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +45,7 @@ public class MapActivity extends AppCompatActivity {
         bookMap.setMultiTouchControls(true);
         IMapController mapController = bookMap.getController();
         mapController.setZoom(12);
-        GeoPoint startPoint = new GeoPoint(53.3164, -6.1967);
+        GeoPoint startPoint = new GeoPoint(53.305344, -6.220654);
         //startPoint.setLatitude(latitude);
         //startPoint.setLongitude(longitude);
         mapController.setCenter(startPoint);
