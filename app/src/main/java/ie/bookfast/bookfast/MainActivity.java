@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button toMapBtn;
+    Button toMapBtn, toScannerBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         toMapBtn = (Button) findViewById(R.id.main_to_map_btn);
+        toScannerBtn = (Button) findViewById(R.id.main_to_barcode_scanner_btn);
+
         toMapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -24,10 +26,22 @@ public class MainActivity extends AppCompatActivity {
                 toMap();
             }
         });
+
+        toScannerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toScanner();
+            }
+        });
     }
 
     private void toMap(){
         Intent mapIntent = new Intent(this, MapActivity.class);
         startActivity(mapIntent);
+    }
+
+    private void toScanner(){
+        Intent scannerIntent = new Intent(this, BarcodeScanActivity.class);
+        startActivity(scannerIntent);
     }
 }
