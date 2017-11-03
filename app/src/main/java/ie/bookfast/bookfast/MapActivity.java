@@ -25,7 +25,7 @@ public class MapActivity extends AppCompatActivity {
     private Location location;
     private double latitude;
     private double longitude;
-//
+////
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
