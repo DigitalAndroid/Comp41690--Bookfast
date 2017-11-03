@@ -1,7 +1,11 @@
 package ie.bookfast.bookfast;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -10,11 +14,20 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     Button toMapBtn, toScannerBtn;
+    static final int REQUEST_CODE_PERMISSIONS = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //asking for permissions for location access
+        if (ActivityCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            //if permission not given, request
+            requestPermission(this);
+        }
+
 
         toMapBtn = (Button) findViewById(R.id.main_to_map_btn);
         toScannerBtn = (Button) findViewById(R.id.main_to_barcode_scanner_btn);
@@ -43,5 +56,38 @@ public class MainActivity extends AppCompatActivity {
     private void toScanner(){
         Intent scannerIntent = new Intent(this, BarcodeScanActivity.class);
         startActivity(scannerIntent);
+    }
+
+    //method to ask for permission at runtime REQUEST_CODE_PERMISSIONS is ID of permission ask
+    public static void requestPermission(Activity activity) {
+        ActivityCompat.requestPermissions(activity,
+                new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION,
+                        android.Manifest.permission.ACCESS_COARSE_LOCATION},
+                REQUEST_CODE_PERMISSIONS);
+    }
+
+    //processing the permission request result
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case REQUEST_CODE_PERMISSIONS: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // related task you need to do.
+
+                } else {
+                    //TODO:Implement functionality for if user denies coarse/fine location permission
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
     }
 }
