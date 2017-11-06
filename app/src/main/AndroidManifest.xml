@@ -25,7 +25,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MapActivity" />
-        <activity android:name=".BarcodeScanActivity"></activity>
+        <activity android:name=".BarcodeScanActivity" />
+        <activity android:name=".BookDetail"></activity>
     </application>
 
 </manifest>

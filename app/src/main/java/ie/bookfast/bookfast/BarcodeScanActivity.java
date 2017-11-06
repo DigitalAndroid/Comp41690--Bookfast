@@ -1,6 +1,7 @@
 package ie.bookfast.bookfast;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
@@ -60,8 +61,13 @@ public class BarcodeScanActivity extends AppCompatActivity implements ZXingScann
         editor.putString(ISBN, result.getText());
         editor.commit();
 
-        //Toast.makeText(getApplicationContext(),result.getText(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),result.getText(),Toast.LENGTH_SHORT).show();
         zXingScannerView.resumeCameraPreview(this);
+
+        // open book detail view
+        Intent mIntent = new Intent(this, BookDetail.class);
+        mIntent.putExtra("ISBN",result.getText());
+        startActivity(mIntent);
 
     }
 
