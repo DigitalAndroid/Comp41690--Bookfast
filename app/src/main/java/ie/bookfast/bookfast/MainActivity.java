@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button toMapBtn, toScannerBtn;
+    Button toMapBtn, toScannerBtn, toBibliotherapyBtn;
     static final int REQUEST_CODE_PERMISSIONS = 1;
 
     @Override
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         toMapBtn = (Button) findViewById(R.id.main_to_map_btn);
         toScannerBtn = (Button) findViewById(R.id.main_to_barcode_scanner_btn);
+        toBibliotherapyBtn = (Button) findViewById(R.id.main_to_bibliotherapy_btn);
 
         toMapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +47,15 @@ public class MainActivity extends AppCompatActivity {
                 toScanner();
             }
         });
+
+        toBibliotherapyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toBibliotherapy();
+            }
+        });
+
+
     }
 
     private void toMap(){
@@ -56,6 +66,13 @@ public class MainActivity extends AppCompatActivity {
     private void toScanner(){
         Intent scannerIntent = new Intent(this, BarcodeScanActivity.class);
         startActivity(scannerIntent);
+    }
+
+    private void toBibliotherapy(){
+
+        Intent bibliotherapyIntent = new Intent(this, BibliotherapyActivity.class);
+        startActivity(bibliotherapyIntent);
+
     }
 
     //method to ask for permission at runtime REQUEST_CODE_PERMISSIONS is ID of permission ask
