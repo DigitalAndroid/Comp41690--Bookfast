@@ -1,8 +1,8 @@
+//BIBLIOTHERAPYACTIVITY.JAVA
 package ie.bookfast.bookfast;
 
 import android.app.ListActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.app.Activity;
 import android.widget.ExpandableListView;
@@ -15,7 +15,7 @@ import java.util.List;
  * Created by keala_000 on 23/10/17.
  */
 
-public class BibliotherapyActivity extends AppCompatActivity {
+public class BibliotherapyActivity extends Activity {
     private ExpandableListView listView;
     private ExpandableListAdapter listAdapter;
     private List<String> listDataHeader;
