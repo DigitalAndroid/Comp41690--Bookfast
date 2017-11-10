@@ -11,6 +11,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.osmdroid.api.IMapController;
@@ -28,12 +29,14 @@ import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.FolderOverlay;
 import org.osmdroid.views.overlay.MapEventsOverlay;
 import org.osmdroid.views.overlay.Marker;
+import org.osmdroid.views.overlay.Overlay;
 import org.osmdroid.views.overlay.Polyline;
 import org.osmdroid.views.overlay.ScaleBarOverlay;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static ie.bookfast.bookfast.R.id.map;
 
@@ -86,7 +89,7 @@ public class MapActivity extends AppCompatActivity{
 
         new overpassKML().execute("amenity=library");
 
-        navigateToMarkers();
+        //navigateToMarkers();
 
         //filling tile on screen with map
         bookMap.setTileSource(TileSourceFactory.MAPNIK);
@@ -98,12 +101,14 @@ public class MapActivity extends AppCompatActivity{
         //Lists needed to eventually get geopoint from overlays
 //        List<Overlay> overlayList = bookMap.getOverlays();
 //        List<Marker> markerList = new ArrayList<>();
-
+        Log.e("Debugging:", "navigateToMarkers: got here.");
         for(int i=0; i<bookMap.getOverlays().size(); i++){
+            Log.e("Debugging:", "navigateToMarkers: got here2.");
             if(bookMap.getOverlays().get(i) instanceof Marker){
                 ((Marker) bookMap.getOverlays().get(i)).setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
                     @Override
                     public boolean onMarkerClick(Marker marker, MapView mapView) {
+                        Log.e("Debugging:", "navigateToMarkers: got here3.");
                         DrawRoad drawRoad = new DrawRoad(getCurrentLocation(), marker.getPosition());
                         drawRoad.execute();
 
@@ -217,7 +222,23 @@ public class MapActivity extends AppCompatActivity{
 
         @Override
         protected void onPostExecute(FolderOverlay kmlOverlay) {
-            bookMap.getOverlays().add(kmlOverlay);
+            List<Overlay> overlayList = kmlOverlay.getItems();
+
+            //Log.e("overlayList: ", String.valueOf(overlayList.size()));
+
+            for(int i=0; i<overlayList.size(); i++){
+                Log.e("overlayList: ", overlayList.get(i).toString());
+                if(overlayList.get(i) instanceof Marker){
+                    Marker marker = (Marker) overlayList.get(i);
+
+                    bookMap.getOverlays().add(marker);
+                }
+
+            }
+
+            //bookMap.getOverlays().add(kmlOverlay);
+
+            navigateToMarkers();
         }
     }
 
