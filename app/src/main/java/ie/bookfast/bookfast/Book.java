@@ -8,6 +8,7 @@ import java.util.ArrayList;
  */
 
 public class Book {
+    public String isbn;
     public String title;
     public ArrayList<String> authors;
     public String authorsString;
@@ -15,14 +16,20 @@ public class Book {
     public String publisher;
     public String publishedDate;
     public String thumbnailURL;
+    public String category;
 
+
+    // api constructor
     public Book(
+            String isbn,
             String title,
             ArrayList<String> authors,
             String description,
             String publisher,
             String publishedDate,
-            String thumbnailURL){
+            String thumbnailURL,
+            String category){
+        this.isbn = isbn;
         this.title = title;
         this.authors = authors;
         this.authorsString = generateAuthorsString(authors);
@@ -30,6 +37,23 @@ public class Book {
         this.publisher = publisher;
         this.publishedDate = publishedDate;
         this.thumbnailURL = thumbnailURL;
+        this.category = category;
+    }
+
+    // db constructor
+    public Book(
+            String isbn,
+            String title,
+            String authorsString,
+            String description,
+            String thumbnailURL,
+            String category){
+        this.isbn = isbn;
+        this.title = title;
+        this.authorsString = authorsString;
+        this.description = description;
+        this.thumbnailURL = thumbnailURL;
+        this.category = category;
     }
 
     private String generateAuthorsString(ArrayList<String> authors) {

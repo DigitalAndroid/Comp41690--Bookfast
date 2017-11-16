@@ -83,10 +83,10 @@ public class GoogleBooksAPI {
                 }
             }
         }
-        return parseJSON(results);
+        return parseJSON(results, isbn_encoded);
     }
 
-    private Book parseJSON(String json_string){
+    private Book parseJSON(String json_string, String isbn){
         Log.e("BOOK_JSON",json_string);
         if (json_string != null) {
             try {
@@ -109,6 +109,8 @@ public class GoogleBooksAPI {
                     String description = bookVolumeInfo.getString("description");
                     String publisher = bookVolumeInfo.getString("publisher");
                     String publishedDate = bookVolumeInfo.getString("publishedDate");
+                    JSONArray categoryArray = bookVolumeInfo.getJSONArray("categories");
+                    String category = (String) categoryArray.get(0);
 
                     // Some books don't have an authors node, use try/catch to prevent null pointers
                     JSONArray bookAuthors = null;
@@ -144,7 +146,7 @@ public class GoogleBooksAPI {
                         thumbnail  = bookImageLinks.getString("thumbnail");
                     }
                     // Create a Book object
-                    mBook = new Book(title,authorsArray,description,publisher,publishedDate,thumbnail);
+                    mBook = new Book(isbn,title,authorsArray,description,publisher,publishedDate,thumbnail,category);
 
                 }
                 return mBook;
