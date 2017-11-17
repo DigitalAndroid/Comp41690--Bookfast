@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 public class BookDetail extends AppCompatActivity {
 
 
@@ -23,6 +25,9 @@ public class BookDetail extends AppCompatActivity {
         setContentView(R.layout.activity_book_detail);
 
         String ISBN = getIntent().getStringExtra("ISBN");
+
+        final Button favButton = (Button) findViewById(R.id.favButton);
+        favButton.setVisibility(View.INVISIBLE);
 
         new FetchBookInfo().execute(ISBN);
     }
@@ -46,6 +51,9 @@ public class BookDetail extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(final Book book) {
+            TextView textViewDesc = (TextView) findViewById(R.id.textViewDesc);
+            final Button favButton = (Button) findViewById(R.id.favButton);
+
             if(book != null) {
                 Log.d("Book", book.toString());
                 // title
@@ -57,8 +65,8 @@ public class BookDetail extends AppCompatActivity {
                 textViewAuthors.setText(book.authorsString);
 
                 // description
-                TextView textViewDesc = (TextView) findViewById(R.id.textViewDesc);
                 textViewDesc.setText(book.description+"\n\n\n");
+                
 
                 // load image
                 ImageView bookCover = (ImageView) findViewById(R.id.imageViewBookCover);
@@ -66,7 +74,8 @@ public class BookDetail extends AppCompatActivity {
 
                 // button
                 final DBConnection dbConnection = new DBConnection(getApplicationContext());
-                final Button favButton = (Button) findViewById(R.id.favButton);
+                favButton.setVisibility(View.VISIBLE);
+
                 if(dbConnection.isBookInFavourites(book.isbn)){
                     favButton.setText("Remove from Favourites");
                 }else{
@@ -91,8 +100,10 @@ public class BookDetail extends AppCompatActivity {
                 });
 
             }else {
-                TextView textViewTitle = (TextView) findViewById(R.id.textViewTitle);
-                textViewTitle.setText("Something went horribly wrong");
+                textViewDesc.setText("No books were found :'(");
+                textViewDesc.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+                favButton.setVisibility(View.GONE);
             }
         }
     }
