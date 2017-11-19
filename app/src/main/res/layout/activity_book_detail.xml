@@ -52,6 +52,13 @@
                     android:textAllCaps="true"
                     />
 
+                <Button
+                    android:id="@+id/amazon_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="Find it on Amazon" />
+
             </LinearLayout>
 
         </LinearLayout>

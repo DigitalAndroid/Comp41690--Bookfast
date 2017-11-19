@@ -45,3 +45,29 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:+'
     implementation 'com.android.support:design:25.+'
 }
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}
+
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}
+
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}
+dependencies {
+    compile 'de.codecrafters.apaarb:apaarb:0.9.1'
+}

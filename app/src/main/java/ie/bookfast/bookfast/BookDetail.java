@@ -1,8 +1,10 @@
 package ie.bookfast.bookfast;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.os.AsyncTask;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +20,8 @@ import org.w3c.dom.Text;
 
 public class BookDetail extends AppCompatActivity {
 
+    private static Book amazonBook;
+    Button toAmazonBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,14 @@ public class BookDetail extends AppCompatActivity {
         favButton.setVisibility(View.INVISIBLE);
 
         new FetchBookInfo().execute(ISBN);
+
+        toAmazonBtn = (Button) findViewById(R.id.amazon_button);
+        toAmazonBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toAmazon();
+            }
+        });
     }
 
 
@@ -55,6 +67,7 @@ public class BookDetail extends AppCompatActivity {
             final Button favButton = (Button) findViewById(R.id.favButton);
 
             if(book != null) {
+                amazonBook = book;
                 Log.d("Book", book.toString());
                 // title
                 TextView textViewTitle = (TextView) findViewById(R.id.textViewTitle);
@@ -108,7 +121,12 @@ public class BookDetail extends AppCompatActivity {
         }
     }
 
-
+    private void toAmazon() {
+        Intent amazonIntent = new Intent(this, AmazonStoreActivity.class);
+        String argument = amazonBook.title + " " + amazonBook.authorsString;
+        amazonIntent.putExtra("book_data", argument);
+        startActivity(amazonIntent);
+    }
 
 
 }
