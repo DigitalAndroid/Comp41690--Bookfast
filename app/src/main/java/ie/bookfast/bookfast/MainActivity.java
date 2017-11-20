@@ -3,6 +3,7 @@ package ie.bookfast.bookfast;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -13,7 +14,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button toMapBtn, toScannerBtn, toBibliotherapyBtn;
+    Button toMapBtn, toScannerBtn, toBibliotherapyBtn, toLibraryIrelandBtn;
     static final int REQUEST_CODE_PERMISSIONS = 1;
 
     @Override
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         toMapBtn = (Button) findViewById(R.id.main_to_map_btn);
         toScannerBtn = (Button) findViewById(R.id.main_to_barcode_scanner_btn);
         toBibliotherapyBtn = (Button) findViewById(R.id.main_to_bibliotherapy_btn);
+        toLibraryIrelandBtn = (Button) findViewById(R.id.main_to_library_ireland_btn);
 
         toMapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +57,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        toLibraryIrelandBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toLibraryIreland();
+            }
+        });
+    }
 
+    private void toLibraryIreland(){
+        Uri libraryIrelandWebpage = Uri.parse("http://www.libraryireland.com/");
+        Intent webIntent = new Intent(Intent.ACTION_VIEW, libraryIrelandWebpage);
+        startActivity(webIntent);
     }
 
     private void toMap(){

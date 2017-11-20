@@ -25,7 +25,7 @@
                 android:layout_width="300dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                app:srcCompat="@color/viewfinder_border" />
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -40,20 +40,43 @@
                     android:id="@+id/textViewTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
+                    android:text=""
                     android:textSize="30dp" />
 
                 <TextView
                     android:id="@+id/textViewAuthors"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
+                    android:text=""
                     android:textSize="15dp"
                     android:textAllCaps="true"
                     />
 
+                <Button
+                    android:id="@+id/amazon_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="Find it on Amazon" />
+
             </LinearLayout>
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/favButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Add to Favourites"
+                />
         </LinearLayout>
 
         <TextView
@@ -62,10 +85,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:elegantTextHeight="true"
-            android:text="TextView"
+            android:text=""
             android:includeFontPadding="false"/>
 
 
 
+
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
