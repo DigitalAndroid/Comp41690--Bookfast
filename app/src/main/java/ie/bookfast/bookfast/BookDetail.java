@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Parcelable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -61,6 +63,7 @@ public class BookDetail extends AppCompatActivity {
         }
 
 
+        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
         @Override
         protected void onPostExecute(final Book book) {
             TextView textViewDesc = (TextView) findViewById(R.id.textViewDesc);
