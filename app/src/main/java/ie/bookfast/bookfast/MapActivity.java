@@ -105,6 +105,8 @@ public class MapActivity extends AppCompatActivity{
                         DrawRoad drawRoad = new DrawRoad(getCurrentLocation(), marker.getPosition());
                         drawRoad.execute();
 
+                        marker.showInfoWindow();
+
                         Toast.makeText(MapActivity.this, "Marker clicked!", Toast.LENGTH_SHORT).show();
 
                         return true;

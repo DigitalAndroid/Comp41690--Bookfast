@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button toMapBtn, toScannerBtn, toBibliotherapyBtn, toLibraryIrelandBtn;
+    Button toMapBtn, toScannerBtn, toBibliotherapyBtn, toFavouritesBtn;
     static final int REQUEST_CODE_PERMISSIONS = 1;
 
     @Override
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         toMapBtn = (Button) findViewById(R.id.main_to_map_btn);
         toScannerBtn = (Button) findViewById(R.id.main_to_barcode_scanner_btn);
         toBibliotherapyBtn = (Button) findViewById(R.id.main_to_bibliotherapy_btn);
-        toLibraryIrelandBtn = (Button) findViewById(R.id.main_to_library_ireland_btn);
+        toFavouritesBtn = (Button) findViewById(R.id.main_to_favourites_btn);
 
         toMapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,13 +57,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        toLibraryIrelandBtn.setOnClickListener(new View.OnClickListener() {
+        toFavouritesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toLibraryIreland();
+                toFavourites();
             }
         });
     }
+
+    private void toFavourites(){
+        Intent favouritesIntent = new Intent(this, favouritesActivity.class);
+        startActivity(favouritesIntent);
+    }
+
 
     private void toLibraryIreland(){
         Uri libraryIrelandWebpage = Uri.parse("http://www.libraryireland.com/");
