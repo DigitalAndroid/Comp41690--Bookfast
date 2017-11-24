@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/favouriteTitle"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/favouriteAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/favouriteTitle"
+        android:layout_alignStart="@+id/favouriteTitle"
+        android:layout_below="@+id/favouriteTitle"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/favouritePublisher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/favouriteAuthor"
+        android:layout_alignStart="@+id/favouriteAuthor"
+        android:layout_below="@+id/favouriteAuthor"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/deleteFavButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/favouritePublisher"
+        android:layout_alignStart="@+id/favouritePublisher"
+        android:layout_below="@+id/favouritePublisher"
+        android:text="Delete" />
+</RelativeLayout>

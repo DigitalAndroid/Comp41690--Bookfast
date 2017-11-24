@@ -44,6 +44,7 @@ public class BookDetail extends AppCompatActivity {
                 toAmazon();
             }
         });
+        toAmazonBtn.setVisibility(View.INVISIBLE);
     }
 
 
@@ -91,6 +92,7 @@ public class BookDetail extends AppCompatActivity {
                 // button
                 final DBConnection dbConnection = new DBConnection(getApplicationContext());
                 favButton.setVisibility(View.VISIBLE);
+                toAmazonBtn.setVisibility(View.VISIBLE);
 
                 if(dbConnection.isBookInFavourites(book.isbn)){
                     favButton.setText("Remove from Favourites");
