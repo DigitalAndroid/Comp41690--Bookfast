@@ -1,14 +1,6 @@
 package ie.bookfast.bookfast;
 
-import de.codecrafters.apaarb.AmazonProductAdvertisingApiRequestBuilder;
-import de.codecrafters.apaarb.AmazonWebServiceAuthentication;
-import de.codecrafters.apaarb.AmazonWebServiceLocation;
-
-import static de.codecrafters.apaarb.ItemCategory.BOOKS;
-import static de.codecrafters.apaarb.ItemInformation.ATTRIBUTES;
-import static de.codecrafters.apaarb.ItemInformation.IMAGES;
-import static de.codecrafters.apaarb.ItemInformation.OFFERS;
-import static de.codecrafters.apaarb.ItemInformation.REVIEWS;
+import java.util.*;
 
 //Created by Luke on the 09/11/17
 
@@ -23,23 +15,36 @@ public class AmazonAdvertisingAPI {
     //Our associate tag
     private static final String ASSOCIATE_TAG = "bookfast0a-21";
 
-    private String requestURL = null;
+    //Service we are using
+    private static final String SERVICE = "AWSECommerceService";
 
-    public AmazonAdvertisingAPI(){}
+    //The region we are linking to
+    private static final String ENDPOINT = "webservices.amazon.co.uk";
+
+    private String requestURL = null;
+    SignedRequestsHelper helper;
+
+    public AmazonAdvertisingAPI(){
+        try {
+            helper = SignedRequestsHelper.getInstance(ENDPOINT, ACCESS_KEY_ID, SECRET_KEY);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+    }
 
     public String searchForBook(String bookSearchDetails) {
 
-        AmazonWebServiceAuthentication myAuthentication
-                = AmazonWebServiceAuthentication.create(ASSOCIATE_TAG, ACCESS_KEY_ID, SECRET_KEY);
+        final Map<String, String> params = new LinkedHashMap<>();
+        params.put("Service", SERVICE);
+        params.put("Operation", "ItemSearch");
+        params.put("AWSAccessKeyId", ACCESS_KEY_ID);
+        params.put("AssociateTag", ASSOCIATE_TAG);
+        params.put("SearchIndex", "Books");
+        params.put("ResponseGroup", "Images,ItemAttributes,OfferFull,Reviews");
+        params.put("Keywords", bookSearchDetails);
 
-        requestURL = AmazonProductAdvertisingApiRequestBuilder
-                .forItemSearch(bookSearchDetails)
-                .includeInformationAbout(ATTRIBUTES)
-                .includeInformationAbout(OFFERS)
-                .includeInformationAbout(IMAGES)
-                .includeInformationAbout(REVIEWS)
-                .filterByCategroy(BOOKS)
-                .createRequestUrlFor(AmazonWebServiceLocation.CO_UK, myAuthentication);
+        requestURL = helper.sign(params);
 
         return requestURL;
     }
