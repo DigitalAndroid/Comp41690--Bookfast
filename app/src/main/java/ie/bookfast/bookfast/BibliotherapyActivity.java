@@ -1,12 +1,11 @@
 //BIBLIOTHERAPYACTIVITY.JAVA
 package ie.bookfast.bookfast;
 
-import android.app.ListActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.app.Activity;
 import android.widget.ExpandableListView;
 
@@ -16,17 +15,9 @@ import java.util.List;
 import android.widget.Button;
 import android.widget.EditText;
 import android.view.View;
+import android.support.v7.widget.Toolbar;
 
-import android.app.AlertDialog;
-import android.database.Cursor;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+
 
 /**
  * Created by keala_000 on 23/10/17.
@@ -71,31 +62,7 @@ public class BibliotherapyActivity extends Activity {
         setContentView(R.layout.activity_bibliotherapy);
         myDb = new DatabaseHelper(this);
 
-        /*Button testBtn=(Button) findViewById(R.id.testBtn);;
 
-        testBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent mIntent = new Intent(BibliotherapyActivity.this, BookDetail.class);
-                mIntent.putExtra("ISBN",healthBooks().getString(Book1, "error"));
-                startActivity(mIntent);
-            }
-        });*/
-/*
-        editName = (EditText)findViewById(R.id.editText_name);
-        editSurname = (EditText)findViewById(R.id.editText_surname);
-        editMarks = (EditText)findViewById(R.id.editText_Marks);
-        editTextId = (EditText)findViewById(R.id.editText_id);
-        btnAddData = (Button)findViewById(R.id.button_add);
-        btnviewAll = (Button)findViewById(R.id.button_viewAll);
-        btnviewUpdate= (Button)findViewById(R.id.button_update);
-        btnDelete= (Button)findViewById(R.id.button_delete);
-        AddData();
-        viewAll();
-        UpdateData();
-        DeleteData();*/
-
-//expandablelist
 
         listView = (ExpandableListView)findViewById(R.id.lvExp);
         initData();
@@ -111,6 +78,18 @@ public class BibliotherapyActivity extends Activity {
                 return false;
             }
         });
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Bookfast");
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent back = new Intent(BibliotherapyActivity.this, MainActivity.class);
+                startActivity(back);
+            }
+        });
+
     }
 
 
@@ -130,14 +109,14 @@ public class BibliotherapyActivity extends Activity {
         editor.putString("101", "978-1938895272");          //Bigger Leaner Stronger
         editor.putString("102", "0091939526");              //The 4-Hour Body
         //Mental Illness
-        editor.putString("200", "078685197X");              //It's Kind of a Funny Story
+        editor.putString("200", "978-0786851973");          //It's Kind of a Funny Story
         editor.putString("201", "1432783998");              //Surviving Metal Illness
         //Self Help
         editor.putString("300", "1509844945");              //Recovery
-        editor.putString("301", "0062265423");              //10% Happier
+        editor.putString("301", "978-1444799057");           //10% Happier
         editor.putString("302", "1594205167");              //The Novel Cure
         //Psychology
-        editor.putString("400", "080701429X");              //Man's Search for Meaning
+        editor.putString("400", "1844132390");              //Man's Search for Meaning
         editor.putString("401", "1405391243");              //The Psychology Book
         //Child Psychology
         editor.putString("500", "0763653411");              //The Scar
@@ -148,91 +127,7 @@ public class BibliotherapyActivity extends Activity {
         return isbnSharedPreference;
     }
 
-/*
-    public void DeleteData() {
-        btnDelete.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Integer deletedRows = myDb.deleteData(editTextId.getText().toString());
-                        if(deletedRows > 0)
-                            Toast.makeText(BibliotherapyActivity.this,"Data Deleted",Toast.LENGTH_LONG).show();
-                        else
-                            Toast.makeText(BibliotherapyActivity.this,"Data not Deleted",Toast.LENGTH_LONG).show();
-                    }
-                }
-        );
-    }
-    public void UpdateData() {
-        btnviewUpdate.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        boolean isUpdate = myDb.updateData(editTextId.getText().toString(),
-                                editName.getText().toString(),
-                                editSurname.getText().toString(),editMarks.getText().toString());
-                        if(isUpdate == true)
-                            Toast.makeText(BibliotherapyActivity.this,"Data Update",Toast.LENGTH_LONG).show();
-                        else
-                            Toast.makeText(BibliotherapyActivity.this,"Data not Updated",Toast.LENGTH_LONG).show();
-                    }
-                }
-        );
-    }
-    public  void AddData() {
-        btnAddData.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        boolean isInserted = myDb.insertData(editName.getText().toString(),
-                                editSurname.getText().toString(),
-                                editMarks.getText().toString() );
-                        if(isInserted == true)
-                            Toast.makeText(BibliotherapyActivity.this,"Data Inserted",Toast.LENGTH_LONG).show();
-                        else
-                            Toast.makeText(BibliotherapyActivity.this,"Data not Inserted",Toast.LENGTH_LONG).show();
-                    }
-                }
-        );
-    }
 
-    public void viewAll() {
-        btnviewAll.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Cursor res = myDb.getAllData();
-                        if(res.getCount() == 0) {
-                            // show message
-                            showMessage("Error","Nothing found");
-                            return;
-                        }
-
-                        StringBuffer buffer = new StringBuffer();
-                        while (res.moveToNext()) {
-                            buffer.append("Id :"+ res.getString(0)+"\n");
-                            buffer.append("Name :"+ res.getString(1)+"\n");
-                            buffer.append("Surname :"+ res.getString(2)+"\n");
-                            buffer.append("Marks :"+ res.getString(3)+"\n\n");
-                        }
-
-                        // Show all data
-                        showMessage("Data",buffer.toString());
-                    }
-                }
-        );
-    }
-
-    public void showMessage(String title,String Message){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(Message);
-        builder.show();
-    }
-
-*/
-// expandablelist
 
     private void initData() {
         listDataHeader = new ArrayList<>();
@@ -286,5 +181,5 @@ public class BibliotherapyActivity extends Activity {
         listHash.put(listDataHeader.get(4),psychology);
         listHash.put(listDataHeader.get(5),childPsychology);
     }
-    //end of expandablelist
+
 }

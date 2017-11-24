@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Bookfast.iml" filepath="$PROJECT_DIR$/Bookfast.iml" />
+      <module fileurl="file://C:\Users\keala_000\ANDROIDPROJECTS\Comp41690--Bookfast\Bookfast.iml" filepath="C:\Users\keala_000\ANDROIDPROJECTS\Comp41690--Bookfast\Bookfast.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Comp41690--Bookfast.iml" filepath="$PROJECT_DIR$/Comp41690--Bookfast.iml" />
       <module fileurl="file://C:\Users\monks\OneDrive\Documents\Comp41690--Bookfast\Bookfast\Comp41690--Bookfast.iml" filepath="C:\Users\monks\OneDrive\Documents\Comp41690--Bookfast\Bookfast\Comp41690--Bookfast.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

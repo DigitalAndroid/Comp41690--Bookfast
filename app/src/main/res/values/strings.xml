@@ -2,4 +2,6 @@
     <string name="app_name">Bookfast</string>
     <string name="title_activity_bibliotherapy">BibliotherapyActivity</string>
     <string name="title_activity_download_xml_task">DownloadXmlTask</string>
+    <string name="title_activity_shitstopper">shitstopper</string>
+    <string name="title_activity_blah">blah</string>
 </resources>
