@@ -16,7 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.view.View;
 import android.support.v7.widget.Toolbar;
-
+import android.widget.TextView;
 
 
 /**
@@ -52,7 +52,7 @@ public class BibliotherapyActivity extends Activity {
     public static final String Book11 = "Ella Berthoud - 'The Novel Cure: From Abandonment to Zestlessness: 751 Books to Cure What Ails You'";
     public static final String Book12 = "Charlotte Moundlic - 'The Scar'";
     public static final String Book13 = "Viktor E. Frankl - 'Man's Search for Meaning'";
-    public static final String Book14 = "Dan Harris - '10% Happier: How I Tamed the Voice in My Head, Reduced Stress Without Losing My Edge, and Found Self-Help That Actually Works'";
+    public static final String Book14 = "Emma Seppälä - 'The Happiness Track: How to Apply the Science of Happiness to Accelerate Your Success'";
     public static final String Book15 = "Nigel Benson - 'The Psychology Book'";
     public static final String Book16 = "Dr. Tina Payne Bryson - 'The Whole-Brain Child: 12 Proven Strategies to Nurture Your Child’s Developing Mind'";
 
@@ -62,7 +62,7 @@ public class BibliotherapyActivity extends Activity {
         setContentView(R.layout.activity_bibliotherapy);
         myDb = new DatabaseHelper(this);
 
-
+        TextView txtView = (TextView) findViewById(R.id.text_id);
 
         listView = (ExpandableListView)findViewById(R.id.lvExp);
         initData();
@@ -85,8 +85,7 @@ public class BibliotherapyActivity extends Activity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent back = new Intent(BibliotherapyActivity.this, MainActivity.class);
-                startActivity(back);
+               finish();
             }
         });
 
@@ -113,7 +112,7 @@ public class BibliotherapyActivity extends Activity {
         editor.putString("201", "1432783998");              //Surviving Metal Illness
         //Self Help
         editor.putString("300", "1509844945");              //Recovery
-        editor.putString("301", "978-1444799057");           //10% Happier
+        editor.putString("301", "978-0349405469");              //The Happiness Track
         editor.putString("302", "1594205167");              //The Novel Cure
         //Psychology
         editor.putString("400", "1844132390");              //Man's Search for Meaning
