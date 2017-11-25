@@ -1,5 +1,6 @@
 package ie.bookfast.bookfast;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -57,6 +58,8 @@ public class favouritesActivity extends AppCompatActivity {
         CustomAdapter customAdapter = new CustomAdapter();
         favouritesListView.setAdapter(customAdapter);
 
+
+
     }
 
     class CustomAdapter extends BaseAdapter{
@@ -86,6 +89,7 @@ public class favouritesActivity extends AppCompatActivity {
             TextView authorTV = (TextView) view.findViewById(R.id.favouriteAuthor);
             TextView publisherTV = (TextView) view.findViewById(R.id.favouritePublisher);
             Button deleteFavButton = (Button) view.findViewById(R.id.deleteFavButton);
+            Button moreInfoButton = (Button) view.findViewById(R.id.moreInfoButton);
 
             titleTV.setText(titles[index]);
             authorTV.setText(authors[index]);
@@ -94,6 +98,14 @@ public class favouritesActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     dbConnection.removeFavBook(ISBN[index]);
+                }
+            });
+            moreInfoButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent mIntent = new Intent(favouritesActivity.this, BookDetail.class);
+                    mIntent.putExtra("ISBN",ISBN[index]);
+                    startActivity(mIntent);
                 }
             });
             return view;

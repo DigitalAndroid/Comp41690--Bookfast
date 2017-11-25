@@ -41,4 +41,15 @@
         android:layout_alignStart="@+id/favouritePublisher"
         android:layout_below="@+id/favouritePublisher"
         android:text="Delete" />
+
+    <Button
+        android:id="@+id/moreInfoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/favouritePublisher"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:text="More Info" />
 </RelativeLayout>

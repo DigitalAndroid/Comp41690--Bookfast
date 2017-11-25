@@ -112,7 +112,7 @@ public class BibliotherapyActivity extends Activity {
         editor.putString("201", "1432783998");              //Surviving Metal Illness
         //Self Help
         editor.putString("300", "1509844945");              //Recovery
-        editor.putString("301", "978-0349405469");              //The Happiness Track
+        editor.putString("301", "978-0349405469");          //The Happiness Track
         editor.putString("302", "1594205167");              //The Novel Cure
         //Psychology
         editor.putString("400", "1844132390");              //Man's Search for Meaning
