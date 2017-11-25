@@ -1,5 +1,6 @@
 package ie.bookfast.bookfast;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -98,7 +99,9 @@ public class MainActivity extends AppCompatActivity {
     public static void requestPermission(Activity activity) {
         ActivityCompat.requestPermissions(activity,
                 new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION,
-                        android.Manifest.permission.ACCESS_COARSE_LOCATION},
+                        android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.CAMERA
+                        },
                 REQUEST_CODE_PERMISSIONS);
     }
 
