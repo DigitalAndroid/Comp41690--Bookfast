@@ -98,6 +98,8 @@ public class favouritesActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     dbConnection.removeFavBook(ISBN[index]);
+                    finish();
+                    startActivity(getIntent());
                 }
             });
             moreInfoButton.setOnClickListener(new View.OnClickListener() {

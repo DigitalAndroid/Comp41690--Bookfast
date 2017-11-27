@@ -42,6 +42,7 @@ public class BarcodeScanActivity extends AppCompatActivity implements ZXingScann
         Intent mIntent = new Intent(this, BookDetail.class);
         mIntent.putExtra("ISBN",result.getText());
         startActivity(mIntent);
+        finish();
     }
 
 }

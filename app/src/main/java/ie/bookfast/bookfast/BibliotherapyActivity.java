@@ -44,7 +44,7 @@ public class BibliotherapyActivity extends Activity {
     public static final String Book3 = "Joe Wicks - 'Lean in 15 - The Shift Plan: 15 Minute Meals and Workouts to Keep You Lean and Healthy'";
     public static final String Book4 = "Michael Mosely - 'The Fast Diet: Lose Weight, Stay Healthy, Live Longer'";
     public static final String Book5 = "Leslie Kaimoff - 'Yoga Anatomy'";
-    public static final String Book6 = "Michael Matthews - 'Bigger Leaner Stronger: The Simple Science of Building the Ultimate Male Body'";
+    public static final String Book6 = "Frederic Delavier - 'Strength Training Anatomy'";
     public static final String Book7 = "Timothy Ferriss - 'The 4-Hour Body: An Uncommon Guide to Rapid Fat-loss, Incredible Sex and Becoming Superhuman'";
     public static final String Book8 = "Russell Brand - 'Recovery: Freedom From Our Addictions'";
     public static final String Book9 = "Ned Vizzini - 'It's Kind of a Funny Story'";
@@ -102,17 +102,17 @@ public class BibliotherapyActivity extends Activity {
         editor.putString("0", "0718187725");                //5 Ingredients
         editor.putString("1", "1780722400");                //The 8-Week Blood Sugar Diet
         editor.putString("2", "1509800662");                //Lean in 15
-        editor.putString("3", "978-1780722375");            //The Fast Diet
+        editor.putString("3", "9781501102011");            //The Fast Diet
         //Physical Health
         editor.putString("100", "1450400248");              //Yoga Anatomy
-        editor.putString("101", "978-1938895272");          //Bigger Leaner Stronger
+        editor.putString("101", "9780736092265");          //Strength Training Anatomy
         editor.putString("102", "0091939526");              //The 4-Hour Body
         //Mental Illness
-        editor.putString("200", "978-0786851973");          //It's Kind of a Funny Story
+        editor.putString("200", "9780786851973");          //It's Kind of a Funny Story
         editor.putString("201", "1432783998");              //Surviving Metal Illness
         //Self Help
         editor.putString("300", "1509844945");              //Recovery
-        editor.putString("301", "978-0349405469");          //The Happiness Track
+        editor.putString("301", "9780062344014");          //The Happiness Track
         editor.putString("302", "1594205167");              //The Novel Cure
         //Psychology
         editor.putString("400", "1844132390");              //Man's Search for Meaning
